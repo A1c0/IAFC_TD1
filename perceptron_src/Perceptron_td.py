@@ -92,6 +92,15 @@ class Perceptron(object):
             expectedResult {int} -- The expected result for the forward pass
             result {int} -- The actual result for the forward pass
         """
+
+        if expectedResult != result:
+            for neurone in self.network:
+                if neurone.active is True:
+                    neurone.value += expectedResult
+                    neurone.active = False
+        else:
+            for neurone in self.network:
+                neurone.active = False
         
         pass
 
