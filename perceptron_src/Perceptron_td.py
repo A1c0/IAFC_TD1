@@ -20,10 +20,17 @@ class Perceptron(object):
         """
 
         if weights is None:
-             # TODO Exercise 1 Initalize a new network containing 
+             # TODO Exercise 1 Initalize a new network containing
              # numberOfNeurons neurons each with a different position chosen
              # at random
             self.network = []
+            list = self.generatePositionList(imageWidth, imageHeight)
+            for i in range(numberOfNeurons):
+                while True:
+                    neutron = Neuron(random.choice(list))
+                    if not neutron in self.network:
+                        self.network.append(neutron)
+                        break
         else:
             # TODO Exercise ? Load an existing network
             self.load(weights)
