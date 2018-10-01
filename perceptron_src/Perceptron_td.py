@@ -128,7 +128,12 @@ class Perceptron(object):
             labels {[type]} -- [description]
             numIterations {[type]} -- [description]
         """
-        
+        result = []
+        for i in range(maxIterations):
+            result.append(self.forwardPass(images[i]))
+            if self.calcError(labels, result) == 0:
+                break
+            self.backProp(labels[-1], result[-1])
         pass
 
     # TODO Exercise 6: Implement the testing function
