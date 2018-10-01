@@ -28,7 +28,7 @@ class Perceptron(object):
             for i in range(numberOfNeurons):
                 while True:
                     neutron = Neuron(random.choice(list))
-                    if not neutron in self.network:
+                    if neutron not in self.network:
                         self.network.append(neutron)
                         break
         else:
@@ -71,7 +71,16 @@ class Perceptron(object):
             image {numpy.array} -- The binary image input
         """
 
-        return 0
+        result = 0
+        for neutron in self.network:
+            neutron.active = True if image[neutron.yPos, neutron.xPos] == 1 else False
+            result += neutron.value * image[neutron.yPos, neutron.xPos]
+        if result > 0:
+            return 1
+        elif result < 0:
+            return -1
+        else:
+            return 0
 
     # TODO Exercise 3: Implement the backpropagation function
     def backProp(self, expectedResult, result):
