@@ -113,8 +113,12 @@ class Perceptron(object):
             labels {list(int)} -- The list of labels
             results {list(int)} -- The list of results
         """
+        result = 0
+        for i in range(len(results)):
+            if labels[i] != results[i]:
+                result += 1
 
-        return 0
+        return result
 
 
     # TODO Exercise 5: Implement the training function
