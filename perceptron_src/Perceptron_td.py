@@ -152,8 +152,11 @@ class Perceptron(object):
         Returns:
             list(int) -- The forward pass results for each input image
         """
-
-        return []
+        results = []
+        for i in range(len(images)):
+            result = self.forwardPass(images[i])
+            results.append(result)
+        return results
 
     # TODO Bonus: write the save and load functions that will allow you to save
     # the result of a training and reuse those weights later
